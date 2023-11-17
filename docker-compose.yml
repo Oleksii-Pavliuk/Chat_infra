@@ -1,0 +1,116 @@
+---
+version: "3.9"
+
+
+
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.11.4-management-alpine
+    container_name: rabbitmq
+    hostname: oleksii
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - test
+
+  redis-json:
+    image: redis/redis-stack:latest
+    container_name: users-redis
+    environment:
+      - REDIS_PASSWORD=mypassword
+    ports:
+      - "6379:6379"
+    networks:
+      - test
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: jaeger
+    ports:
+      - "16686:16686"
+      - "4317:4317"
+      - "4318:4318"
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+    networks:
+      - test
+
+  consul-server:
+    image: hashicorp/consul:latest
+    container_name: consul-server
+    restart: always
+    volumes:
+      - ./consul/server.json:/consul/config/server.json:ro
+    networks:
+      - test
+    ports:
+      - 8500:8500
+      - 8600:8600/tcp
+      - 8600:8600/udp
+    command: agent
+
+  consul-client:
+    image: hashicorp/consul:latest
+    container_name: consul-client
+    restart: always
+    volumes:
+      - ./consul/client.json:/consul/config/client.json:ro
+    networks:
+      - test
+    command: agent
+
+
+# services
+
+
+
+
+  gateway:
+    image: gateway
+    container_name: gateway
+    ports:
+      - "3000:3000"
+    networks:
+      - test
+
+  parser:
+    image: parser
+    container_name: parser
+    ports:
+      - "3001:3001"
+    networks:
+      - test
+
+  twig:
+    image: twig
+    container_name: twig
+    ports:
+      - "3002:3002"
+    networks:
+      - test
+
+
+  redis-service:
+    image: redis-service
+    container_name: redis-service
+    ports:
+      - "3003:3003"
+    networks:
+      - test
+
+  web:
+    image: web
+    container_name: web
+    ports:
+      - "8080:80"
+    networks:
+      - test
+
+
+
+networks:
+  test:
+    name: test
+    driver: bridge
