@@ -53,12 +53,14 @@ module "argocd_prod" {
 
 
 module "argocd_dev_root" {
-  source             = "./terraform_argocd_root_eks"
+  source             = "./argocd-root"
 
   cluster_client_certificate = module.development_cluster.client_certificate
   cluster_client_key = module.development_cluster.client_key
   cluster_ca_certificate = module.development_cluster.ca_certificate
   cluster_endpoint = module.development_cluster.cluster_endpoint
+  cluster_token = module.development_cluster.token
+
 
   git_source_path    = "argocd/develepment/app"
   git_source_repoURL = "git@github.com:Oleksii-Pavliuk/argocd.git"
@@ -66,12 +68,14 @@ module "argocd_dev_root" {
 
 
 module "argocd_prod_root" {
-  source             = "./terraform_argocd_root_eks"
+  source             = "./argocd-root"
 
   cluster_client_certificate = module.production_cluster.client_certificate
   cluster_client_key = module.production_cluster.client_key
   cluster_ca_certificate = module.production_cluster.ca_certificate
   cluster_endpoint = module.production_cluster.cluster_endpoint
+  cluster_token = module.production_cluster.token
+
 
   git_source_path    = "argocd/production/app"
   git_source_repoURL = "git@github.com:Oleksii-Pavliuk/argocd.git"
