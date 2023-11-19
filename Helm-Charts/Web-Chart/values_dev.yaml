@@ -1,0 +1,6 @@
+namespace: chat
+
+container:
+  name: web
+  image: registry.digitalocean.com/cplk01-test-foobar/messanger-web:v0.1
+  port: 80
