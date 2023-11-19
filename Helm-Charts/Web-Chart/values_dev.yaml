@@ -1,5 +1,7 @@
 namespace: chat
 
+replicaCount: 2
+
 container:
   name: web
   image: registry.digitalocean.com/cplk01-test-foobar/messanger-web:v0.1
