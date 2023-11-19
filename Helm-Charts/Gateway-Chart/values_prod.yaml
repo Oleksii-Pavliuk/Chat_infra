@@ -1,0 +1,8 @@
+namespace: chat
+
+replicaCount: 2
+
+container:
+  name: gateway
+  image: registry.digitalocean.com/cplk01-test-foobar/chat-gateway:latest
+  port: 3000
