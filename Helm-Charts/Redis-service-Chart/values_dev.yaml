@@ -1,0 +1,8 @@
+namespace: chat
+
+replicaCount: 2
+
+container:
+  name: redis-service
+  image: registry.digitalocean.com/cplk01-test-foobar/chat-redis-service:v0.1
+  port: 3003
