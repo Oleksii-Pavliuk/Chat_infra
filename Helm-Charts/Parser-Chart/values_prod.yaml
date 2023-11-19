@@ -1,0 +1,8 @@
+namespace: chat
+
+replicaCount: 2
+
+container:
+  name: parser
+  image: registry.digitalocean.com/cplk01-test-foobar/chat-parser:latest
+  port: 3001
