@@ -5,7 +5,7 @@ metadata:
   namespace: {{ .Values.namespace }}
 spec:
   selector:
-    project: {{ .Release.Name }}
+    app: {{ .Release.Name }}
   ports:
     - port: 8080
       targetPort: {{ .Values.container.port }}
