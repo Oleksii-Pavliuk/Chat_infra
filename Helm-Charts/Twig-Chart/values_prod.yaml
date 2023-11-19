@@ -1,0 +1,8 @@
+namespace: chat
+
+replicaCount: 2
+
+container:
+  name: twig
+  image: registry.digitalocean.com/cplk01-test-foobar/chat-twig:latest
+  port: 3002
