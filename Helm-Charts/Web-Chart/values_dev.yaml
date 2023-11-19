@@ -4,5 +4,5 @@ replicaCount: 2
 
 container:
   name: web
-  image: registry.digitalocean.com/cplk01-test-foobar/messanger-web:v0.1
+  image: registry.digitalocean.com/cplk01-test-foobar/chat-web:v0.1
   port: 80
