@@ -62,8 +62,8 @@ module "argocd_dev_root" {
   cluster_token = module.development_cluster.token
 
 
-  git_source_path    = "argocd/develepment/app"
-  git_source_repoURL = "git@github.com:Oleksii-Pavliuk/argocd.git"
+  git_source_path    = "argocd/develepment/apps"
+  git_source_repoURL = "git@github.com:Oleksii-Pavliuk/Chat_infra.git"
 }
 
 
@@ -77,6 +77,6 @@ module "argocd_prod_root" {
   cluster_token = module.production_cluster.token
 
 
-  git_source_path    = "argocd/production/app"
-  git_source_repoURL = "git@github.com:Oleksii-Pavliuk/argocd.git"
+  git_source_path    = "argocd/production/apps"
+  git_source_repoURL = "git@github.com:Oleksii-Pavliuk/Chat_infra.git"
 }
