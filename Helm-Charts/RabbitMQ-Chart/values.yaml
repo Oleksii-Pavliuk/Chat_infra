@@ -1,0 +1,8 @@
+namespace: chat
+
+replicaCount: 1
+
+container:
+  name: rabbitmq
+  image: rabbitmq:3.11.4-management-alpine
+  hostname: oleksii

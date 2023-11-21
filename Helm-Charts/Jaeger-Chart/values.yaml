@@ -1,0 +1,10 @@
+namespace: chat
+
+replicaCount: 1
+
+container:
+  name: jaeger
+  image: jaegertracing/all-in-one:latest
+  env:
+    - name: COLLECTOR_OTLP_ENABLED
+    - value: true
