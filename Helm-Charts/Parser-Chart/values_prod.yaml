@@ -1,6 +1,6 @@
 namespace: chat
 
-replicaCount: 2
+replicaCount: 1
 
 container:
   name: parser
