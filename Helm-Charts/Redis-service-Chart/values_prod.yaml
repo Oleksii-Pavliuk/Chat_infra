@@ -4,5 +4,5 @@ replicaCount: 1
 
 container:
   name: redis-service
-  image: registry.digitalocean.com/cplk01-test-foobar/chat-redis-service:latest
+  image: registry.digitalocean.com/cplk01-test-foobar/chat-redis-service:registry.digitalocean.com/cplk01-test-foobar/chat-web:v0.1
   port: 3003
