@@ -4,5 +4,5 @@ replicaCount: 2
 
 container:
   name: gateway
-  image: registry.digitalocean.com/cplk01-test-foobar/chat-gateway:v0.1
+  image: registry.digitalocean.com/cplk01-test-foobar/chat-gateway:latest
   port: 3000
