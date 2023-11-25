@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name     : jaeger
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    name     : in-cluster
+    namespace: chat
+  source:
+    path   : "Helm-Charts/Jaeger-Chart"
+    repoURL: "git@github.com:Oleksii-Pavliuk/Chat_infra.git"
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+      - values.yaml
+
+  project: default
+  syncPolicy:
+    automated:
+      prune   : true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
