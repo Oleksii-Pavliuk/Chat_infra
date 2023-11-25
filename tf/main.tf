@@ -19,11 +19,6 @@ module "development_cluster" {
 }
 
 
-module "production_cluster" {
-  source                    = "./cluster"
-  cluster_name              = "production"
-  do_token                  =  var.do_token
-}
 
 module "argocd_dev" {
   source           = "./argocd"
@@ -38,20 +33,6 @@ module "argocd_dev" {
 }
 
 
-module "argocd_prod" {
-  source           = "./argocd"
-
-  cluster_client_certificate = module.production_cluster.client_certificate
-  cluster_client_key = module.production_cluster.client_key
-  cluster_ca_certificate = module.production_cluster.ca_certificate
-  cluster_endpoint = module.production_cluster.cluster_endpoint
-  cluster_token = module.production_cluster.token
-
-  chart_version    = "5.46.0"
-}
-
-
-
 module "argocd_dev_root" {
   source             = "./argocd-root"
 
@@ -63,20 +44,5 @@ module "argocd_dev_root" {
 
 
   git_source_path    = "argocd/develepment/apps"
-  git_source_repoURL = "git@github.com:Oleksii-Pavliuk/Chat_infra.git"
-}
-
-
-module "argocd_prod_root" {
-  source             = "./argocd-root"
-
-  cluster_client_certificate = module.production_cluster.client_certificate
-  cluster_client_key = module.production_cluster.client_key
-  cluster_ca_certificate = module.production_cluster.ca_certificate
-  cluster_endpoint = module.production_cluster.cluster_endpoint
-  cluster_token = module.production_cluster.token
-
-
-  git_source_path    = "argocd/production/apps"
   git_source_repoURL = "git@github.com:Oleksii-Pavliuk/Chat_infra.git"
 }
