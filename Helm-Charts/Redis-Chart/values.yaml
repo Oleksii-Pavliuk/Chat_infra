@@ -5,7 +5,7 @@ replicaCount: 1
 container:
   name: users-redis
   image: redis/redis-stack:latest
-  port: 3008
+  port: 6379
   env:
     - name: "REDIS_PASSWORD"
     - value: "mypassword"
